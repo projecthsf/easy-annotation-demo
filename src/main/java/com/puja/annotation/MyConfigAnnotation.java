@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@AnnotationConfigurationScan(fieldAnnotation = MyFieldAnnotation.class)
+@AnnotationConfigurationScan(processor = MyAnnotationProcessor.class, fieldAnnotation = MyFieldAnnotation.class)
 public @interface MyConfigAnnotation {
 }

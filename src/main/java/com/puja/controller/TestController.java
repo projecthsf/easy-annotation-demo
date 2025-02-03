@@ -1,9 +1,6 @@
 package com.puja.controller;
 
-import com.puja.service.TestServiceWithMyConfigAnnotation;
-import com.puja.service.TestServiceWithoutMyClassAnnotation;
-import com.puja.service.TestServiceWithoutMyConfigAnnotation;
-import com.puja.service.TestServiceWithMyClassAnnotation;
+import com.puja.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +13,7 @@ public class TestController {
 
     private final TestServiceWithMyConfigAnnotation testServiceWithMyConfigAnnotation;
     private final TestServiceWithoutMyConfigAnnotation testServiceWithoutMyConfigAnnotation;
+    private final TestServiceWithOriginalSpringConfiguration testServiceWithOriginalSpringConfiguration;
 
     @GetMapping("/test-1")
     public String testServiceWithMyClassAnnotation() {
@@ -33,7 +31,12 @@ public class TestController {
     }
 
     @GetMapping("/test-4")
-    public String testServiceWithoutMyConfigAnnotation() {
+    public String testServiceWithOriginalSpringConfiguration() {
         return testServiceWithoutMyConfigAnnotation.getString();
+    }
+
+    @GetMapping("/test-5")
+    public String testServiceWithoutMyConfigAnnotation() {
+        return testServiceWithOriginalSpringConfiguration.getString();
     }
 }
